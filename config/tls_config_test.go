@@ -11,13 +11,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:build go1.8
 // +build go1.8
 
 package config
 
 import (
 	"crypto/tls"
-	"io/ioutil"
+	"os"
 	"reflect"
 	"testing"
 
@@ -26,7 +27,7 @@ import (
 
 // LoadTLSConfig parses the given YAML file into a tls.Config.
 func LoadTLSConfig(filename string) (*tls.Config, error) {
-	content, err := ioutil.ReadFile(filename)
+	content, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}

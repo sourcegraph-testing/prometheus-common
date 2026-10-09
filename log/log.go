@@ -16,7 +16,6 @@ package log
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/url"
 	"os"
@@ -261,7 +260,7 @@ func NewLogger(w io.Writer) Logger {
 // NewNopLogger returns a logger that discards all log messages.
 func NewNopLogger() Logger {
 	l := logrus.New()
-	l.Out = ioutil.Discard
+	l.Out = io.Discard
 	return logger{entry: logrus.NewEntry(l)}
 }
 
