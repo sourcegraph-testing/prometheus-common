@@ -17,7 +17,7 @@ package config
 
 import (
 	"crypto/tls"
-	"io/ioutil"
+	"os"
 	"reflect"
 	"testing"
 
@@ -26,7 +26,7 @@ import (
 
 // LoadTLSConfig parses the given YAML file into a tls.Config.
 func LoadTLSConfig(filename string) (*tls.Config, error) {
-	content, err := ioutil.ReadFile(filename)
+	content, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
